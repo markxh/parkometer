@@ -2,7 +2,7 @@
     <string name="app_name">Parkometer</string>
     <string name="pay">Pay</string>
     <string name="amount">Amount</string>
-    <string name="amount_rands">R%.2f</string>
+    <string name="amount_rands">R%s</string>
     <string name="change">Change</string>
     <string name="due">Due</string>
     <string name="reset">Reset</string>

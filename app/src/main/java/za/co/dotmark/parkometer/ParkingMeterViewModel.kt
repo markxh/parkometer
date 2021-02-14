@@ -15,7 +15,7 @@ class ParkingMeterViewModel : ViewModel() {
 
         if(remaining <= BigDecimal(0)) {
             remainingFee.value = "0"
-            change.value = remaining.toString()
+            change.value = (remaining * BigDecimal(-1)).toString()
             enablePayment.value = false
         } else {
             remainingFee.value = remaining.toString()
