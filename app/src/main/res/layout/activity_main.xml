@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="za.co.dotmark.parkometer.ParkingMeterViewModel" />
+
+        <variable
+            name="View"
+            type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tvAmountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/due"
+            android:textSize="24sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tvAmountDue"
+            app:layout_constraintBottom_toBottomOf="@id/tvAmountDue"/>
+
+        <TextView
+            android:id="@+id/tvAmountDue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="74sp"
+            android:layout_marginTop="24dp"
+            android:text="@{viewModel.remainingFee}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="R25.00"/>
+
+        <EditText
+            android:id="@+id/etPay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/amount"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:inputType="numberDecimal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountDue"
+            app:layout_constraintRight_toLeftOf="@+id/btnPay"
+            app:layout_constraintBottom_toBottomOf="@id/btnPay"/>
+
+        <Button
+            android:id="@+id/btnPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:layout_marginTop="24dp"
+            android:visibility="@{viewModel.enablePayment ? View.VISIBLE : View.GONE}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountDue"/>
+
+        <TextView
+            android:id="@+id/tvChangeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/etPay"
+            app:layout_constraintRight_toLeftOf="@id/tvChangeAmount"/>
+
+        <TextView
+            android:id="@+id/tvChangeAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.change}"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/btnPay"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"
+            android:text="@string/reset"
+            android:textAllCaps="false"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
